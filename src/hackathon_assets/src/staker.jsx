@@ -13,6 +13,7 @@ import Wallet from './wallet'
 
 export default function Staker(props) {
   
+  const auth = props.auth;
   const hackathon = props.canisters.hackathon;
   const token = props.canisters.token;
   
@@ -524,6 +525,15 @@ export default function Staker(props) {
     clearInterval(interval)
     routToPage('Main')
   }
+
+  function handsOff() {
+    clearInterval(interval)
+    // let privateKey = prompt('Enter private key to start hands-off mode!', '')
+    let privateKey = 'privateKey'
+    props = auth.getProps()
+    props.privateKey = privateKey
+    routToPage('HandsOff', props)
+  }
   
   return (
     <div className="eventHorizon">
@@ -549,6 +559,8 @@ export default function Staker(props) {
     </div>
     
     <div id="signedUp" hidden={true}>
+    <a id="hands_off_button" data-text="Hands-off mode" onClick={handsOff} className="rainbow-button" style={{width: 400}}></a>
+
     <div className="panel">
     <h3>Create New Stake</h3>
     <form id="staker_form">
