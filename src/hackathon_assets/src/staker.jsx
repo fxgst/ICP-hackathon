@@ -85,8 +85,9 @@ export default function Staker(props) {
     
     document.getElementById("reveal-secret-from").reset()
     
-    const backendPublicKey = await hackathon.lookupMyPublicKey()
-    console.log("PublicKey:", backendPublicKey[0])
+    // TODO: Why was that here?
+    // const backendPublicKey = await hackathon.lookupMyPublicKey()
+    // console.log("PublicKey:", backendPublicKey[0])
     
     let secretId
     try {
@@ -528,8 +529,8 @@ export default function Staker(props) {
 
   function handsOff() {
     clearInterval(interval)
-    // let privateKey = prompt('Enter private key to start hands-off mode!', '')
-    let privateKey = 'privateKey'
+    // for demo mode: oM76Mg310VaiM7SLvRIM+OtQSOr900jZB8hfVyZfMgX4l57Vkd7hm1+FCvx1S4eXGG+Q/SwfpC7lZV4LR8EJ7g==
+    let privateKey = prompt('Enter private key to start hands-off mode!', '')
     props = auth.getProps()
     props.privateKey = privateKey
     routToPage('HandsOff', props)
